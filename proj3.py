@@ -16,17 +16,27 @@ class MinHeap:
     data: list[Node] = field(default_factory=list)
 
 def heapify_up(heap: MinHeap, index: int) -> MinHeap:
+    new_heap = heap[:]
+    if index == 0:
+        return new_heap
 
+    parent = (index - 1) // 2
+
+    if new_heap[index] < new_heap[parent]:
+        temp = new_heap[index]
+        new_heap[index] = new_heap[parent]
+        new_heap[parent] = temp
+        return heapify_up(new_heap, parent)
 
 def insert(heap: MinHeap, element: Node) -> MinHeap:
-
+    pass
 
 def heapify_down(heap: MinHeap, index: int) -> MinHeap:
-
+    pass
 
 
 def extract_min(heap: MinHeap) -> tuple[MinHeap, Node]:
-
+    pass
 
 
         
