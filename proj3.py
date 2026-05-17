@@ -16,20 +16,28 @@ class MinHeap:
     data: list[Node] = field(default_factory=list)
 
 def heapify_up(heap: MinHeap, index: int) -> MinHeap:
-    new_heap = heap[:]
+    new_heap = heap
     if index == 0:
         return new_heap
 
     parent = (index - 1) // 2
 
-    if new_heap[index] < new_heap[parent]:
-        temp = new_heap[index]
-        new_heap[index] = new_heap[parent]
-        new_heap[parent] = temp
+    if new_heap.data[index].freq < new_heap.data[parent].freq:
+        temp = new_heap.data[index].freq
+        new_heap.data[index].freq = new_heap.data[parent].freq
+        new_heap.data[parent].freq = temp
+        return heapify_up(new_heap, parent)
+
+    if new_heap.data[index].char < new_heap.data[parent].char:
+        temp = new_heap.data[index].char
+        new_heap.data[index].char = new_heap.data[parent].char
+        new_heap.data[parent].char = temp
         return heapify_up(new_heap, parent)
 
 def insert(heap: MinHeap, element: Node) -> MinHeap:
-    pass
+    new_heap = MinHeap(heap.data + [element])
+    new_heap = heapify_up(new_heap, len(new_heap.data) - 1)
+    return new_heap
 
 def heapify_down(heap: MinHeap, index: int) -> MinHeap:
     new_heap = heap[:]
