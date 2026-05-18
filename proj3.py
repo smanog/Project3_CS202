@@ -41,32 +41,32 @@ def insert(heap: MinHeap, element: Node) -> MinHeap:
     return new_heap
 
 def heapify_down(heap: MinHeap, index: int) -> MinHeap:
-    new_heap = heap[:]
+    new_heap = heap
     left = 2 * index + 1
     right = 2 * index + 2
-    size = len(new_heap)
+    size = len(new_heap.data)
     if left >= size:
         return new_heap
 
     smallest = left
 
-    if right < size and new_heap[right] < new_heap[left]:
+    if right < size and new_heap.data[right] < new_heap.data[left]:
         smallest = right
-    if new_heap[smallest] < new_heap[index]:
-        temp = new_heap[index]
-        new_heap[index] = new_heap[smallest]
-        new_heap[smallest] = temp
+    if new_heap.data[smallest] < new_heap.data[index]:
+        temp = new_heap.data[index]
+        new_heap.data[index] = new_heap.data[smallest]
+        new_heap.data[smallest] = temp
         return heapify_down(new_heap, smallest)
     return new_heap
 
 
 def extract_min(heap: MinHeap) -> tuple[MinHeap, Node]:
-    pass
+    return heap, heap.data[0]
 
 
         
 def count_frequency(s: str)-> dict[str,int]:
-
+    freq = { }
     pass
 
 
