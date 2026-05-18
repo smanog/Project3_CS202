@@ -33,6 +33,7 @@ def heapify_up(heap: MinHeap, index: int) -> MinHeap:
         new_heap.data[index].char = new_heap.data[parent].char
         new_heap.data[parent].char = temp
         return heapify_up(new_heap, parent)
+    return new_heap
 
 def insert(heap: MinHeap, element: Node) -> MinHeap:
     new_heap = MinHeap(heap.data + [element])
