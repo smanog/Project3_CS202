@@ -20,19 +20,19 @@ def heapify_up(heap: MinHeap, index: int) -> MinHeap:
     if index == 0:
         return new_heap
 
-    parent = (index - 1) // 2
+    parent_freq = (index - 1) // 2
 
-    if new_heap.data[index].freq < new_heap.data[parent].freq:
+    if new_heap.data[index].freq < new_heap.data[parent_freq].freq:
         temp = new_heap.data[index].freq
-        new_heap.data[index].freq = new_heap.data[parent].freq
-        new_heap.data[parent].freq = temp
-        return heapify_up(new_heap, parent)
+        new_heap.data[index].freq = new_heap.data[parent_freq].freq
+        new_heap.data[parent_freq].freq = temp
+        return heapify_up(new_heap, parent_freq)
 
-    if new_heap.data[index].char < new_heap.data[parent].char:
+    if new_heap.data[index].char < new_heap.data[parent_freq].char:
         temp = new_heap.data[index].char
-        new_heap.data[index].char = new_heap.data[parent].char
-        new_heap.data[parent].char = temp
-        return heapify_up(new_heap, parent)
+        new_heap.data[index].char = new_heap.data[parent_freq].char
+        new_heap.data[parent_freq].char = temp
+        return heapify_up(new_heap, parent_freq)
     return new_heap
 
 def insert(heap: MinHeap, element: Node) -> MinHeap:
@@ -81,8 +81,11 @@ def create_priority_queue(frequency: dict[str, int]) -> MinHeap:
         insert(pq, Node(frequency[key], key))
     return pq
 
-def build_tree(priority_queue: MinHeap) -> Node:
-    pass
+def build_tree_from_queue(priority_queue: MinHeap) -> Node:
+    for data in priority_queue:
+        freq = data.freq + data[1].freq
+        min(data.char, data[1].char)
+        new_node = Node()
 
 
 
@@ -97,7 +100,7 @@ def encode(s: str, codes: dict)-> str:
     pass
 
 
-def decode(encoded_string: str, root: Node):
+def decode(encoded_string: str, root: Node)-> str:
     pass
 
 def huffman_encoding(s:str):
