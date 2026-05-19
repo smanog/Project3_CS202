@@ -6,7 +6,7 @@ class TestProj3(unittest.TestCase):
     def test_heapify_up(self):
         heap = MinHeap([Node(1, 'A', Node(3, 'F', Node(5, 'S'))), Node(7, 'z')])
         result = heapify_up(heap, 0)
-        self.assertEqual(result, [1, 10, 5, 20, 15, 9, 8])
+        self.assertEqual(result, MinHeap([Node(1,'A', Node(3, 'F', Node(5,'S'))), Node(7, 'z')]))
 
     def test_heapify_down(self):
         heap = [9, 3, 5]
