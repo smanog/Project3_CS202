@@ -61,20 +61,25 @@ def heapify_down(heap: MinHeap, index: int) -> MinHeap:
 
 
 def extract_min(heap: MinHeap) -> tuple[MinHeap, Node]:
+    heapify_down(heap, 0)
     return heap, heap.data[0]
-
 
         
 def count_frequency(s: str)-> dict[str,int]:
     freq = { }
-    pass
+    for char in s:
+        if char in freq:
+            freq[char] += 1
+        else:
+            freq[char] = 1
+    return freq
 
 
 def create_priority_queue(frequency: dict[str, int]) -> MinHeap:
-
-    pass
-
-
+    pq = MinHeap([])
+    for key in frequency:
+        insert(pq, Node(frequency[key], key))
+    return pq
 
 def build_tree(priority_queue: MinHeap) -> Node:
     pass
