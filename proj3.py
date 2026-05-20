@@ -87,10 +87,10 @@ def build_tree_from_queue(priority_queue: MinHeap) -> Node:
         for data in priority_queue.data:
             freq = data.freq + data[1].freq
             char = min(data.char, data[1].char)
-            new_node = Node(freq, char)
+            new_node = Node(freq, char, left= data, right= priority_queue.data[1])
             insert(pq, new_node)
             extract_min(pq)
-    return pq
+    return pq.data[0]
 
 
 
