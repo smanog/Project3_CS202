@@ -17,8 +17,8 @@ class MinHeap:
 
 def heapify_up(heap: MinHeap, index: int) -> MinHeap:
     new_heap = heap
-    if index == 0:
-        return new_heap
+    #if index == 0:
+     #   return new_heap
 
     parent_freq = (index - 1) // 2
 
@@ -82,10 +82,15 @@ def create_priority_queue(frequency: dict[str, int]) -> MinHeap:
     return pq
 
 def build_tree_from_queue(priority_queue: MinHeap) -> Node:
-    for data in priority_queue:
-        freq = data.freq + data[1].freq
-        min(data.char, data[1].char)
-        new_node = Node()
+    pq = priority_queue
+    while len(priority_queue.data) != 1:
+        for data in priority_queue.data:
+            freq = data.freq + data[1].freq
+            char = min(data.char, data[1].char)
+            new_node = Node(freq, char)
+            insert(pq, new_node)
+            extract_min(pq)
+    return pq
 
 
 
